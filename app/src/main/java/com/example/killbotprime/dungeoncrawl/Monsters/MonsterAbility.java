@@ -15,7 +15,7 @@ public class MonsterAbility {
 
     public MonsterAbility(int uses, int damageMin,int damageMax,String description, Effects effect){
         this.uses=uses;
-        this.damageMin=uses;
+        this.damageMin=damageMin;
         this.damageMax=damageMax;
         this.description=description;
         this.effect=effect;

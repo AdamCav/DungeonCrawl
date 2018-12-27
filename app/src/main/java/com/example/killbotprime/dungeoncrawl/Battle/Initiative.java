@@ -3,14 +3,14 @@ package com.example.killbotprime.dungeoncrawl.Battle;
 import com.example.killbotprime.dungeoncrawl.Mob;
 
 public class Initiative implements Comparable<Initiative> {
-    Mob combatant;
+    Combatant combatant;
     int initiative;
-    int partyPosition;
+//    int partyPosition;
 
-    public Initiative(Mob combatant, int initiative,int partyPosition){
+    public Initiative(Combatant combatant, int initiative){
         this.initiative=initiative;
         this.combatant=combatant;
-        this.partyPosition=partyPosition;
+//        this.partyPosition=partyPosition;
     }
 
 
@@ -19,11 +19,11 @@ public class Initiative implements Comparable<Initiative> {
         return initiative-other.initiative;
     }
 
-    public Mob getCombatant() {
+    public Combatant getCombatant() {
         return combatant;
     }
 
-    public void setCombatant(Mob combatant) {
+    public void setCombatant(Combatant combatant) {
         this.combatant = combatant;
     }
 
@@ -35,11 +35,11 @@ public class Initiative implements Comparable<Initiative> {
         this.initiative = initiative;
     }
 
-    public int getPartyPosition() {
-        return partyPosition;
-    }
-
-    public void setPartyPosition(int partyPosition) {
-        this.partyPosition = partyPosition;
-    }
+//    public int getPartyPosition() {
+//        return partyPosition;
+//    }
+//
+//    public void setPartyPosition(int partyPosition) {
+//        this.partyPosition = partyPosition;
+//    }
 }

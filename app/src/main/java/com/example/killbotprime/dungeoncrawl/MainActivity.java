@@ -11,13 +11,17 @@ import android.widget.TextView;
 
 import com.example.killbotprime.dungeoncrawl.Battle.Actions;
 import com.example.killbotprime.dungeoncrawl.Battle.Battlefield;
+import com.example.killbotprime.dungeoncrawl.Battle.CharacterCombatant;
+import com.example.killbotprime.dungeoncrawl.Battle.Combatant;
 import com.example.killbotprime.dungeoncrawl.Battle.Initiative;
+import com.example.killbotprime.dungeoncrawl.Battle.MonsterCombatant;
 import com.example.killbotprime.dungeoncrawl.Items.Weapon;
 import com.example.killbotprime.dungeoncrawl.Jobs.Jobs;
 import com.example.killbotprime.dungeoncrawl.Locations.NewbieDungeon;
 import com.example.killbotprime.dungeoncrawl.Monsters.Monster;
 import com.example.killbotprime.dungeoncrawl.Monsters.MonsterGroup;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.LinkedList;
 
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         gameState.location=new NewbieDungeon();
         gameState.party=party;
         battlefield = new Battlefield(gameState.location.getEncounter(),party);
+
+
 
         setUpDisplay();
 
@@ -81,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter logAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.monster_list,logTextArray);
         log.setAdapter(logAdapter);
+
+        log.setSelection(logAdapter.getCount()-1);
 
     }
 
@@ -119,20 +127,19 @@ public class MainActivity extends AppCompatActivity {
     public void resolveTurn(){
         battlefield.setUpInitative();
         System.out.println();
-        Initiative nextCombatant;
+        Combatant nextCombatant;
 
         while (!battlefield.initiativeIsEmpty()){
-            nextCombatant=battlefield.nextTurn();
-            System.out.println(nextCombatant.getCombatant().getClass());
-            if (nextCombatant.getCombatant().getClass().equals(Character.class)){
-                if (battlefield.getCharacterAction(nextCombatant.getPartyPosition()).equals(Actions.ATTACK)){
-                    Character combatant = (Character)nextCombatant.getCombatant();
-                    Weapon weapon=((Character)nextCombatant.getCombatant()).getWeapon();
-                    Effect.dealDamage(battlefield.getEnemies().get(0).getMonster(),Randomizer.roll(weapon.getMinDamage(),weapon.getMaxDamage(),(combatant.getStrength()-10)%2));
+            nextCombatant=battlefield.nextTurn().getCombatant();
+            if (nextCombatant.isACharacter()){
+                CharacterCombatant combatant = (CharacterCombatant)nextCombatant;
+                if (combatant.getAction().equals(Actions.ATTACK)){
+                    Effect.dealDamage(battlefield.getEnemies().get(0),Randomizer.roll(combatant.getMinimumDamage(),combatant.getMaximumDamage(),0));
                 }
-            } else if (nextCombatant.getCombatant() instanceof Monster){
-                Character target = battlefield.getMobTarget(1);
-                Monster enemy=(Monster)nextCombatant.getCombatant();
+            } else if (!nextCombatant.isACharacter()){
+                MonsterCombatant combatant = (MonsterCombatant)nextCombatant;
+                CharacterCombatant target = battlefield.getMobTarget(1);
+                Monster enemy=combatant.getMonster();
                 enemy.doAbility(enemy.getMonsterAbilities()[0],target);
             }
 

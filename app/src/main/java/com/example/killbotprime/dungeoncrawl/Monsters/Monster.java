@@ -1,5 +1,6 @@
 package com.example.killbotprime.dungeoncrawl.Monsters;
 
+import com.example.killbotprime.dungeoncrawl.Battle.CharacterCombatant;
 import com.example.killbotprime.dungeoncrawl.Character;
 import com.example.killbotprime.dungeoncrawl.Effect;
 import com.example.killbotprime.dungeoncrawl.Effects;
@@ -51,8 +52,9 @@ public abstract class Monster extends Mob {
         this.initiative = initiative;
     }
 
-    public void doAbility(MonsterAbility monsterAbility,Character target){
+    public void doAbility(MonsterAbility monsterAbility,CharacterCombatant target){
         if(monsterAbility.effect.equals(Effects.DEALDAMAGE)){
+            System.out.println(monsterAbility.damageMin+"-"+monsterAbility.damageMax);
             Effect.dealDamage(target,Randomizer.roll(monsterAbility.damageMin,monsterAbility.damageMax,0));
         }
     }

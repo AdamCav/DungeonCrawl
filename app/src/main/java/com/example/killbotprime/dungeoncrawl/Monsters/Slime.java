@@ -9,6 +9,7 @@ public class Slime extends Monster {
     public Slime(){
        setName("Green Slime");
        setLevel(1);
+       setInitiative(0);
         setHitpointMin(1);
         setHitpointMax(6);
         MonsterAbility[] monsterAbilities = {new MonsterAbility(-1,1,4,"Green Slime lunges!", Effects.DEALDAMAGE)};

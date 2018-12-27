@@ -11,6 +11,6 @@ public class Randomizer {
     public static int roll(int min, int max, int modifier){
 
 
-        return rand.nextInt(max+min+modifier);
+        return rand.nextInt(max-min+1)+min+modifier;
     }
 }

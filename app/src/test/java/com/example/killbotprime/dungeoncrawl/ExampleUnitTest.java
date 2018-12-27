@@ -14,4 +14,19 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void randomizer_isCorrect(){
+                int max=0;
+                int min=1000;
+                for (int i=0;i<1000;i++){
+                    int roll=Randomizer.roll(1,10,5);
+                    max=Math.max(max,roll);
+                    min=Math.min(min,roll);
+                }
+                assertEquals(max,15);
+                assertEquals(min,5);
+
+
+    }
 }

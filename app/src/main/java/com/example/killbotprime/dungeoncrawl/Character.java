@@ -113,4 +113,14 @@ public class Character extends Mob {
     public Weapon getWeapon() {
         return weapon;
     }
+
+    public Boolean hasSpells(){ return job.learnsSpells();}
+
+    public int[] getCurrentSpellLevels() {
+        return currentSpellLevels;
+    }
+
+    public List<LinkedList<Spell>> getSpellsKnown() {
+        return spellsKnown;
+    }
 }

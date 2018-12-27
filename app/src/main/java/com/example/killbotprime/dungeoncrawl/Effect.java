@@ -1,5 +1,7 @@
 package com.example.killbotprime.dungeoncrawl;
 
+import com.example.killbotprime.dungeoncrawl.Battle.Combatant;
+
 public class Effect {
 
     /**
@@ -8,7 +10,7 @@ public class Effect {
      * @param amount
      * @param effect
      */
-    public static void resolveEffect(Mob target, int amount, Effects effect){
+    public static void resolveEffect(Combatant target, int amount, Effects effect){
         int effectValue = effect.ordinal();
         if (effectValue==Effects.DEALDAMAGE.ordinal()){
             dealDamage(target,amount);
@@ -17,12 +19,12 @@ public class Effect {
         }
     }
 
-    public static void restoreHP(Mob target, int amount){
+    public static void restoreHP(Combatant target, int amount){
         target.modifyHitPoints(amount);
         Log.write(target.getName()+ " restores "+amount+ "hit points.");
     }
 
-    public static void dealDamage(Mob target, int amount){
+    public static void dealDamage(Combatant target, int amount){
         target.modifyHitPoints(-amount);
         Log.write(target.getName()+ " loses "+amount+ " hit points.");
 
