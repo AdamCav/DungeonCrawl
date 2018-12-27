@@ -9,9 +9,14 @@ import com.example.killbotprime.dungeoncrawl.Character;
 
 
 public class CureLightWounds extends Spell {
-    String name="Cure Light Wounds";
-    String shortDescription="A soft golden glow falls over them";
-    int spellLevel = 1;
+    public CureLightWounds(){
+        String name="Cure Light Wounds";
+        String shortDescription="A soft golden glow falls over them";
+        int spellLevel = 1;
+        this.name=name;
+        this.shortDescription=shortDescription;
+        this.spellLevel=spellLevel;
+    }
     @Override
     public void effect(Combatant target, Character user) {
         Effect.restoreHP(target, Randomizer.roll(1,6,user.getLevel()));

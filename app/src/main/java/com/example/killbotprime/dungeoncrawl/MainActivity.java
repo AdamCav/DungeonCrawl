@@ -20,17 +20,22 @@ import com.example.killbotprime.dungeoncrawl.Jobs.Jobs;
 import com.example.killbotprime.dungeoncrawl.Locations.NewbieDungeon;
 import com.example.killbotprime.dungeoncrawl.Monsters.Monster;
 import com.example.killbotprime.dungeoncrawl.Monsters.MonsterGroup;
+import com.example.killbotprime.dungeoncrawl.Spells.Spell;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Party party;
     GameState gameState;
     Battlefield battlefield;
     TextView[] partyStatus = new TextView[6];
+    ListView log;
     int turn=0;
+
+    boolean disableButtons = false;
 
     private SpellListFragment spellListFragment;
 
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         gameState.party=party;
         battlefield = new Battlefield(gameState.location.getEncounter(),party);
 
-
+        log=findViewById(R.id.log);
 
         setUpDisplay();
 
@@ -113,15 +118,16 @@ public class MainActivity extends AppCompatActivity {
         partyStatus[5].setText(party.getStatusText(5));
     }
 
-    public void Attack(View view){
-
-        battlefield.setAction(turn, Actions.ATTACK);
-        turn++;
-        if (turn>=6){
-            turn=0;
-            resolveTurn();
+    public void attack(View view){
+        if (!disableButtons) {
+            battlefield.setAction(turn, Actions.ATTACK);
+            turn++;
+            if (turn >= 6) {
+                turn = 0;
+                resolveTurn();
+            }
+            updateDisplay();
         }
-        updateDisplay();
     }
 
     public void resolveTurn(){
@@ -146,6 +152,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
         updateDisplay();
+    }
+
+    public void showSpellList(View v){
+//
+//        ArrayAdapter logAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.monster_list,logTextArray);
+//        log.setAdapter(logAdapter);
+if (!disableButtons) {
+    CharacterCombatant character = battlefield.getParty().getPartyCharacterCombatant(turn);
+    if (character.HasSpells()) {
+        spellListFragment = new SpellListFragment();
+        disableButtons = true;
+        getFragmentManager().beginTransaction().replace(R.id.logHolder, spellListFragment).addToBackStack("SpellList").commit();
+        log.setVisibility(View.GONE);
+    }
+}
+    }
+
+    public String[] getSpellList(){
+        CharacterCombatant character = battlefield.getParty().getPartyCharacterCombatant(turn);
+        String[] spellList = new String[1];
+        int i=0;
+
+            for(Spell spell:character.getSpellsKnown().get(0)){
+                if (spell!=null) {
+                    System.out.println(spell.toString());
+                    spellList[i] = spell.toString();
+                    i++;
+                }
+
+        }
+        return spellList;
+
+
     }
 
 

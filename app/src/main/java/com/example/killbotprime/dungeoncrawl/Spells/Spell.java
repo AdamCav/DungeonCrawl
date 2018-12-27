@@ -10,6 +10,9 @@ public abstract class Spell{
 
     String name="DEFAULT_ERROR_SPELL";
     String shortDescription="DEFAULT_ERROR_DESCRIPTION";
+    int spellLevel;
+
+
 
     public void perform(Combatant[] target, Character user) {
         System.out.println(user.getName()+" casts "+name);
@@ -20,6 +23,11 @@ public abstract class Spell{
 
     public void effect (Combatant target, Character user){
 
+    }
+
+    @Override
+    public String toString(){
+        return name+" - "+shortDescription;
     }
 
 }
