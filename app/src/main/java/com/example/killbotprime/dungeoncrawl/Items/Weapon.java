@@ -1,5 +1,8 @@
 package com.example.killbotprime.dungeoncrawl.Items;
 
+/**
+ * A weapon wielded by a character, determining their melee damage
+ */
 public abstract class Weapon {
     int minDamage;
     int maxDamage;

@@ -2,6 +2,9 @@ package com.example.killbotprime.dungeoncrawl;
 
 import java.util.Random;
 
+/**
+ * IT ROLLS DICE
+ */
 public class Randomizer {
     static Random rand = new Random(System.currentTimeMillis());
 

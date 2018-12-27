@@ -2,6 +2,12 @@ package com.example.killbotprime.dungeoncrawl;
 
 public class Effect {
 
+    /**
+     * A list of potential effects an ability or attack may have.
+     * @param target
+     * @param amount
+     * @param effect
+     */
     public static void resolveEffect(Mob target, int amount, Effects effect){
         int effectValue = effect.ordinal();
         if (effectValue==Effects.DEALDAMAGE.ordinal()){

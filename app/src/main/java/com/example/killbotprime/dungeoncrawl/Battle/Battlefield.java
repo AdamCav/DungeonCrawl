@@ -10,6 +10,9 @@ import com.example.killbotprime.dungeoncrawl.Randomizer;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+/**
+ * A list of the individuals involved in a fight
+ */
 public class Battlefield {
     ArrayList<MonsterGroup> monsterGroups;
     ArrayList<Combatant> enemies = new ArrayList<>();

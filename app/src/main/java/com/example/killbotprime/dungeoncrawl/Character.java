@@ -17,6 +17,10 @@ import com.example.killbotprime.dungeoncrawl.Jobs.Thief;
 import com.example.killbotprime.dungeoncrawl.Jobs.Warrior;
 import com.example.killbotprime.dungeoncrawl.Spells.Spell;
 
+
+/**
+ * A player character
+ */
 public class Character extends Mob {
     final int[] experienceToNextLevel = {100,300,700,1200,1800,2700,3700,4800,6000};
     Job job;

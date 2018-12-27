@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+/**
+ * The display for spells in combat
+ */
 public class SpellListFragment extends android.app.Fragment {
         private View view;
         private LinearLayout linearLayout;

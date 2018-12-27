@@ -2,6 +2,9 @@ package com.example.killbotprime.dungeoncrawl;
 
 import java.util.LinkedList;
 
+/**
+ * Used to display to a combat log.
+ */
 public class Log {
     static LinkedList<String> log = new LinkedList<>();
 

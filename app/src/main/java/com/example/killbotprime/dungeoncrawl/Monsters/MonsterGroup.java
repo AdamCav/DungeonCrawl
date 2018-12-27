@@ -3,6 +3,10 @@ package com.example.killbotprime.dungeoncrawl.Monsters;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
+/**
+ * This is what makes up an encounter, a monster type and a # of that monster
+ */
 public class MonsterGroup {
     Monster monster;
     int count;

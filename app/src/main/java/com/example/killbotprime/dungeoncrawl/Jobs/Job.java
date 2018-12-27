@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A job is a character class, defining their abilities
+ */
 public abstract class Job {
     int hitDice;
     boolean learnsSpells=false;

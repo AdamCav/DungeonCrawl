@@ -6,6 +6,9 @@ import com.example.killbotprime.dungeoncrawl.Effects;
 import com.example.killbotprime.dungeoncrawl.Mob;
 import com.example.killbotprime.dungeoncrawl.Randomizer;
 
+/**
+ * This is an enemy players fight
+ */
 public abstract class Monster extends Mob {
     MonsterAbility[] monsterAbilities;
     int hitpointMin=1;

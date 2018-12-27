@@ -1,5 +1,8 @@
 package com.example.killbotprime.dungeoncrawl;
 
+/**
+ * A being that exists in the game world, a character or monster atm
+ */
 public abstract class Mob {
     private String name;
     private int level;

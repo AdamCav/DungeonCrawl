@@ -3,6 +3,9 @@ package com.example.killbotprime.dungeoncrawl.Monsters;
 import com.example.killbotprime.dungeoncrawl.Effect;
 import com.example.killbotprime.dungeoncrawl.Effects;
 
+/**
+ * This defines an attack a monster might use, no weapons, or spells, just abilities
+ */
 public class MonsterAbility {
     int uses;
     int damageMin;

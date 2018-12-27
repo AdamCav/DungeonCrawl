@@ -2,6 +2,9 @@ package com.example.killbotprime.dungeoncrawl;
 
 import java.util.LinkedList;
 
+/**
+ * The Party, a collection of up to six characters.
+ */
 public class Party {
     Character[] partyOrder = new Character[6];
 
