@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,8 +29,10 @@ public class SpellListFragment extends android.app.Fragment {
         @Override
         public void onViewCreated(View view, Bundle savedInstanceState){
                 spellList = getView().findViewById(R.id.spellListViewer);
-                ArrayAdapter spellListAdapter = new ArrayAdapter<String>(getContext(),R.layout.monster_list,((MainActivity)this.getActivity()).getSpellList());
+                ArrayAdapter spellListAdapter = new ArrayAdapter<>(getContext(),R.layout.monster_list,((MainActivity)this.getActivity()).getSpellList());
                 spellList.setAdapter(spellListAdapter);
+                spellList.setClickable(true);
+                spellList.setOnItemClickListener(spellSelect);
         }
 
         @Override
@@ -38,5 +41,12 @@ public class SpellListFragment extends android.app.Fragment {
             ((MainActivity)this.getActivity()).log.setVisibility(View.VISIBLE);
             ((MainActivity) this.getActivity()).disableButtons=false;
         }
+
+        private AdapterView.OnItemClickListener spellSelect = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println(spellList.getItemAtPosition(position));
+            }
+        };
 
 }
